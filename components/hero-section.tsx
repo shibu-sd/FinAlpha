@@ -1,11 +1,10 @@
 import React from 'react'
 import Link from 'next/link'
-import { ArrowRight, ChevronRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import Image from 'next/image'
 import { TextEffect } from '@/components/ui/text-effect'
 import { AnimatedGroup } from '@/components/ui/animated-group'
-import { HeroHeader } from '@/components/hero-header'
+import ColourfulText from './ui/colourful-text'
 
 const transitionVariants = {
     item: {
@@ -43,15 +42,19 @@ export default function HeroSection() {
                         <div className="absolute inset-0 -z-10 size-full [background:radial-gradient(125%_125%_at_50%_100%,transparent_0%,var(--color-background)_75%)]"></div>
                         <div className="mx-auto max-w-7xl px-6">
                             <div className="text-center sm:mx-auto lg:mr-auto lg:mt-0">
-                                
 
-                                <TextEffect
-                                    preset="fade-in-blur"
-                                    speedSegment={0.3}
-                                    as="h1"
-                                    className="mt-8 text-balance text-6xl md:text-7xl lg:mt-16 xl:text-[5.25rem]">
-                                    Your financial edge begins with FinAlpha
-                                </TextEffect>
+                                <h1 className="mt-8 text-balance text-6xl md:text-7xl lg:mt-16 xl:text-[5.25rem] font-bold">
+                                    <TextEffect
+                                        preset="fade-in-blur"
+                                        speedSegment={0.3}
+                                        as="span"
+                                        className="inline"
+                                    >
+                                        {"Your financial edge begins with"}
+                                    </TextEffect>{" "}
+                                    <ColourfulText text="FinAlpha" />
+                                </h1>
+                                
                                 <TextEffect
                                     per="line"
                                     preset="fade-in-blur"

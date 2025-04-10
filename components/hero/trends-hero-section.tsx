@@ -8,7 +8,7 @@ export default function HeroSection() {
                     <h2 className="text-balance text-4xl font-semibold lg:text-5xl flex justify-center items-center gap-3 flex-wrap">
                         <span>Stay in sync with</span>
                         <ContainerTextFlip
-                            words={["live stock prices", "market stories", "economic calendar", "stock heatmaps"]}
+                            words={["live stock prices", "market stories", "stock heatmap", "stock screener", "economic calendar"]}
                             textClassName="text-4xl lg:text-5xl"
                         />
                     </h2>

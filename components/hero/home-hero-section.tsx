@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button'
 import Image from 'next/image'
 import { TextEffect } from '@/components/ui/text-effect'
 import { AnimatedGroup } from '@/components/ui/animated-group'
-import ColourfulText from './ui/colourful-text'
+import ColourfulText from '../ui/colourful-text'
 
 const transitionVariants = {
     item: {

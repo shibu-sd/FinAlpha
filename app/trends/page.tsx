@@ -7,7 +7,7 @@ import NewsWidget from "@/components/widgets/news";
 import ScreenerWidget from "@/components/widgets/screener";
 import StripWidget from "@/components/widgets/strip";
 
-export default function Home() {
+export default function Trends() {
   return (
     <>
       <StripWidget />

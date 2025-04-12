@@ -11,8 +11,8 @@ export default function Features() {
             <div className="py-32">
                 <div className="mx-auto max-w-5xl px-6">
                     <div className="text-center">
-                        <h2 className="text-balance text-3xl font-semibold md:text-4xl">Integrate with your favorite tools</h2>
-                        <p className="text-muted-foreground mt-6">Connect seamlessly with popular platforms and services to enhance your workflow.</p>
+                        <h2 className="text-balance text-3xl font-semibold md:text-4xl">Tools That Work as Hard as You Do</h2>
+                        <p className="text-muted-foreground mt-6">Unlock calculators and utilities tailored to support your financial goals - fast, accurate, and built right in.</p>
                     </div>
 
                     <div className="mt-12 grid gap-x-6 gap-y-6 sm:grid-cols-2 lg:grid-cols-3">

@@ -1,74 +1,88 @@
-import { Card, CardContent, CardHeader } from '@/components/ui/card'
-import { Settings2, Sparkles, Zap } from 'lucide-react'
-import { ReactNode } from 'react'
+import { Button } from '@/components/ui/button'
+import { Card } from '@/components/ui/card'
+import { ChevronRight } from 'lucide-react'
 import Link from 'next/link'
+import * as React from 'react'
+import { CalculatorIcon, PieChart, Shield, IndianRupeeIcon, TrendingUp } from 'lucide-react'
 
 export default function Features() {
     return (
-        <section className="bg-zinc-50 py-16 md:py-32 dark:bg-transparent">
-            <div className="@container mx-auto max-w-5xl px-6">
-                <div className="text-center">
-                    <h2 className="text-balance text-4xl font-semibold lg:text-5xl">Built to Simplify Your Finances</h2>
-                    <p className="mt-4">All the essential tools you need to plan, calculate, and take control of your financial goals — all in one place.</p>
-                </div>
-                <div className="@min-4xl:max-w-full @min-4xl:grid-cols-3 mx-auto mt-8 grid max-w-sm gap-6 *:text-center md:mt-16">
-                    <Link href="/tools/x">
-                        <Card className="group shadow-zinc-950/5">
-                            <CardHeader className="pb-3">
-                                <CardDecorator>
-                                    <Zap className="size-6" aria-hidden />
-                                </CardDecorator>
+        <section>
+            <div className="py-32">
+                <div className="mx-auto max-w-5xl px-6">
+                    <div className="text-center">
+                        <h2 className="text-balance text-3xl font-semibold md:text-4xl">Integrate with your favorite tools</h2>
+                        <p className="text-muted-foreground mt-6">Connect seamlessly with popular platforms and services to enhance your workflow.</p>
+                    </div>
 
-                                <h3 className="mt-6 font-medium">Customizable</h3>
-                            </CardHeader>
+                    <div className="mt-12 grid gap-x-6 gap-y-6 sm:grid-cols-2 lg:grid-cols-3">
 
-                            <CardContent>
-                                <p className="text-sm">Extensive customization options, allowing you to tailor every aspect to meet your specific needs.</p>
-                            </CardContent>
-                        </Card>
-                    </Link>
+                        <IntegrationCard
+                            title="Mutual Fund Investment Calculator"
+                            description="Plan your SIPs or lump-sum investments and estimate future returns with ease."
+                            link='/'>
+                            <PieChart />
+                        </IntegrationCard>
 
-                    <Link href="/tools/x">
-                        <Card className="group shadow-zinc-950/5">
-                            <CardHeader className="pb-3">
-                                <CardDecorator>
-                                    <Settings2 className="size-6" aria-hidden />
-                                </CardDecorator>
+                        <IntegrationCard
+                            title="EMI Calculator"
+                            description="Break down your loan payments and know your monthly commitments upfront."
+                            link='/'>
+                            <CalculatorIcon />
+                        </IntegrationCard>
 
-                                <h3 className="mt-6 font-medium">You have full control</h3>
-                            </CardHeader>
+                        <IntegrationCard
+                            title="Insurance Calculator"
+                            description="Assess the right coverage for you and estimate premium costs effortlessly."
+                            link='/'>
+                            <Shield />
+                        </IntegrationCard>
 
-                            <CardContent>
-                                <p className="mt-3 text-sm">From design elements to functionality, you have complete control to create a unique and personalized experience.</p>
-                            </CardContent>
-                        </Card>
-                    </Link>
+                        <IntegrationCard
+                            title="NPV Calculator"
+                            description="Calculate the Net Present Value of future cash flows to evaluate the profitability."
+                            link='/'>
+                            <IndianRupeeIcon />
+                        </IntegrationCard>
 
-                    <Link href="/tools/x">
-                        <Card className="group shadow-zinc-950/5">
-                            <CardHeader className="pb-3">
-                                <CardDecorator>
-                                    <Sparkles className="size-6" aria-hidden />
-                                </CardDecorator>
+                        <IntegrationCard
+                            title="ROI Calculator"
+                            description="Find Return on Investment to understand how your capital is generating returns."
+                            link='/'>
+                            <TrendingUp />
+                        </IntegrationCard>
 
-                                <h3 className="mt-6 font-medium">Powered By AI</h3>
-                            </CardHeader>
-
-                            <CardContent>
-                                <p className="mt-3 text-sm">Elements to functionality, you have complete control to create a unique experience.</p>
-                            </CardContent>
-                        </Card>
-                    </Link>
+                    </div>
                 </div>
             </div>
         </section>
     )
 }
 
-const CardDecorator = ({ children }: { children: ReactNode }) => (
-    <div className="relative mx-auto size-36 duration-200 [--color-border:color-mix(in_oklab,var(--color-zinc-950)10%,transparent)] group-hover:[--color-border:color-mix(in_oklab,var(--color-zinc-950)20%,transparent)] dark:[--color-border:color-mix(in_oklab,var(--color-white)15%,transparent)] dark:group-hover:bg-white/5 dark:group-hover:[--color-border:color-mix(in_oklab,var(--color-white)20%,transparent)]">
-        <div aria-hidden className="absolute inset-0 bg-[linear-gradient(to_right,var(--color-border)_1px,transparent_1px),linear-gradient(to_bottom,var(--color-border)_1px,transparent_1px)] bg-[size:24px_24px]" />
-        <div aria-hidden className="bg-radial to-background absolute inset-0 from-transparent to-75%" />
-        <div className="bg-background absolute inset-0 m-auto flex size-12 items-center justify-center border-l border-t">{children}</div>
-    </div>
-)
+const IntegrationCard = ({ title, description, children, link = 'https://github.com/shibu-sd' }: { title: string; description: string; children: React.ReactNode; link?: string }) => {
+    return (
+        <Card className="p-6">
+            <div className="relative">
+                <div className="*:size-10">{children}</div>
+
+                <div className="space-y-2 py-6">
+                    <h3 className="text-base font-medium">{title}</h3>
+                    <p className="text-muted-foreground line-clamp-2 text-sm">{description}</p>
+                </div>
+
+                <div className="flex gap-3 border-t border-dashed pt-6">
+                    <Button
+                        asChild
+                        variant="secondary"
+                        size="sm"
+                        className="gap-1 pr-2 shadow-none">
+                        <Link href={link}>
+                            Explore
+                            <ChevronRight className="ml-0 !size-3.5 opacity-50" />
+                        </Link>
+                    </Button>
+                </div>
+            </div>
+        </Card>
+    )
+}

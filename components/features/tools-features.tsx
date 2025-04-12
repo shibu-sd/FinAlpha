@@ -20,7 +20,7 @@ export default function Features() {
                         <IntegrationCard
                             title="Mutual Fund Investment Calculator"
                             description="Plan your SIPs or lump-sum investments and estimate future returns with ease."
-                            link='/'>
+                            link='/tools/mutual-fund-investment-calculator'>
                             <PieChart />
                         </IntegrationCard>
 

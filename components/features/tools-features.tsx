@@ -27,28 +27,28 @@ export default function Features() {
                         <IntegrationCard
                             title="EMI Calculator"
                             description="Break down your loan payments and know your monthly commitments upfront."
-                            link='/'>
+                            link='/tools/emi-calculator'>
                             <CalculatorIcon />
                         </IntegrationCard>
 
                         <IntegrationCard
                             title="Insurance Calculator"
                             description="Assess the right coverage for you and estimate premium costs effortlessly."
-                            link='/'>
+                            link='/tools/insurance-calculator'>
                             <Shield />
                         </IntegrationCard>
 
                         <IntegrationCard
                             title="NPV Calculator"
                             description="Calculate the Net Present Value of future cash flows to evaluate the profitability."
-                            link='/'>
+                            link='/tools/npv-calculator'>
                             <IndianRupeeIcon />
                         </IntegrationCard>
 
                         <IntegrationCard
                             title="ROI Calculator"
                             description="Find Return on Investment to understand how your capital is generating returns."
-                            link='/'>
+                            link='/tools/roi-calculator'>
                             <TrendingUp />
                         </IntegrationCard>
 

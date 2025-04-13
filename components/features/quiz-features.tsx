@@ -1,7 +1,6 @@
 "use client"
 
 import { useState } from "react";
-import FooterSection from "@/components/footer";
 import { HeroHeader } from "@/components/hero/hero-header";
 import { Button } from '@/components/ui/button';
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
@@ -345,8 +344,6 @@ export default function Features() {
                     )}
                 </div>
             </div>
-
-            <FooterSection />
         </>
     );
 }

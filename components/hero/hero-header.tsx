@@ -12,7 +12,7 @@ const menuItems = [
     { name: 'Trends', href: '/trends' },
     { name: 'Tools', href: '/tools  ' },
     { name: 'Blogs', href: '#link' },
-    { name: 'Quiz', href: '#link' },
+    { name: 'Quiz', href: '/quiz' },
 ]
 
 export const HeroHeader = () => {

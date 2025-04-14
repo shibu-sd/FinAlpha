@@ -145,17 +145,11 @@ export default function Features() {
 
     return (
         <>
-            <HeroHeader />
-
-            <div className="relative py-16 md:py-32 bg-background">
+            <div className="py-32">
                 <div className="mx-auto max-w-5xl px-6">
-                    <div className="mx-auto max-w-3xl text-center mb-16">
-                        <h2 className="text-balance text-3xl md:text-4xl lg:text-5xl">
-                            Your Daily Dose of Financial Trivia
-                        </h2>
-                        <p className="mt-4 text-lg text-muted-foreground">
-                            Discover how much you really know about finance with fun, engaging quizzes that educate while you play.
-                        </p>
+                    <div className="text-center mb-12">
+                        <h2 className="text-balance text-3xl font-semibold md:text-4xl">Your Daily Dose of Financial Trivia</h2>
+                        <p className="text-muted-foreground mt-6">Discover how much you really know about finance with fun, engaging quizzes that educate while you play.</p>
                     </div>
 
                     {quizState === 'idle' && (

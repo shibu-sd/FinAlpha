@@ -11,7 +11,7 @@ const menuItems = [
     { name: 'Home', href: '/' },
     { name: 'Trends', href: '/trends' },
     { name: 'Tools', href: '/tools  ' },
-    { name: 'Blogs', href: '#link' },
+    { name: 'Blogs', href: '/blogs' },
     { name: 'Quiz', href: '/quiz' },
 ]
 

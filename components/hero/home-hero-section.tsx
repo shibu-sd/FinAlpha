@@ -52,9 +52,11 @@ export default function HeroSection() {
                                     >
                                         {"Your financial edge begins with"}
                                     </TextEffect>{" "}
-                                    <ColourfulText text="FinAlpha" />
+                                    <span className="whitespace-nowrap">
+                                        <ColourfulText text="FinAlpha" />
+                                    </span>
                                 </h1>
-                                
+
                                 <TextEffect
                                     per="line"
                                     preset="fade-in-blur"

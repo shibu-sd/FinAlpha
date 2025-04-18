@@ -41,7 +41,7 @@ export default function Features() {
         try {
             const ai = new GoogleGenAI({ apiKey: process.env.NEXT_PUBLIC_GEMINI_API_KEY || "" });
             const model = process.env.NEXT_PUBLIC_GEMINI_MODEL || "gemini-2.0-flash-lite";
-            
+
             const prompt = `You are a financial education expert. Generate a **completely unique** 10-question multiple choice quiz each time on the topic of **basic finance, stocks, and mutual funds**. The questions should be **easy to medium**, designed for **beginners**, and cover a **variety of subtopics** such as savings, investing, risk, diversification, mutual fund basics, stock terminology, etc.
             Each question must include:
             - A clear question under the "question" key.
@@ -166,9 +166,16 @@ export default function Features() {
                                         Each question has four options with one correct answer. After selecting your answer,
                                         you'll get an explanation to help you learn as you go.
                                     </p>
-                                    <Button size="lg" onClick={fetchQuizData}>
-                                        Start Quiz
-                                    </Button>
+                                    <button
+                                        onClick={fetchQuizData}
+                                        className="relative inline-flex h-12 overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-offset-2 focus:ring-offset-slate-50"
+                                    >
+                                        <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#A7F3D0_0%,#065F46_50%,#A7F3D0_100%)]" />
+                                        <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-slate-950 px-6 py-1 text-base font-medium text-white backdrop-blur-3xl">
+                                            Start Quiz
+                                        </span>
+                                    </button>
+
                                 </CardContent>
                             </Card>
                         </div>

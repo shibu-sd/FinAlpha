@@ -3,7 +3,7 @@ import { Card } from '@/components/ui/card'
 import { ChevronRight } from 'lucide-react'
 import Link from 'next/link'
 import * as React from 'react'
-import { CalculatorIcon, PieChart, Shield, IndianRupeeIcon, TrendingUp } from 'lucide-react'
+import { CalculatorIcon, PieChart, Shield, IndianRupeeIcon, TrendingUp, Wrench, BarChart, Scale, LineChart } from 'lucide-react'
 
 export default function Features() {
     return (
@@ -15,43 +15,67 @@ export default function Features() {
                         <p className="text-muted-foreground mt-6">Unlock calculators and utilities tailored to support your financial goals - fast, accurate, and built right in.</p>
                     </div>
 
-                    <div className="mt-12 grid gap-x-6 gap-y-6 sm:grid-cols-2 lg:grid-cols-3">
+                    <div className="mt-16">
+                        <div className="flex items-center mb-6 gap-2">
+                            <CalculatorIcon className="size-6" />
+                            <h3 className="text-2xl font-medium">Calculators</h3>
+                        </div>
+                        <div className="grid gap-x-6 gap-y-6 sm:grid-cols-2 lg:grid-cols-3 mb-16">
+                            <IntegrationCard
+                                title="Mutual Fund Investment Calculator"
+                                description="Plan your SIPs or lump-sum investments and estimate future returns with ease."
+                                link='/tools/mutual-fund-investment-calculator'>
+                                <PieChart />
+                            </IntegrationCard>
 
-                        <IntegrationCard
-                            title="Mutual Fund Investment Calculator"
-                            description="Plan your SIPs or lump-sum investments and estimate future returns with ease."
-                            link='/tools/mutual-fund-investment-calculator'>
-                            <PieChart />
-                        </IntegrationCard>
+                            <IntegrationCard
+                                title="EMI Calculator"
+                                description="Break down your loan payments and know your monthly commitments upfront."
+                                link='/tools/emi-calculator'>
+                                <BarChart />
+                            </IntegrationCard>
 
-                        <IntegrationCard
-                            title="EMI Calculator"
-                            description="Break down your loan payments and know your monthly commitments upfront."
-                            link='/tools/emi-calculator'>
-                            <CalculatorIcon />
-                        </IntegrationCard>
+                            <IntegrationCard
+                                title="Insurance Calculator"
+                                description="Assess the right coverage for you and estimate premium costs effortlessly."
+                                link='/tools/insurance-calculator'>
+                                <Shield />
+                            </IntegrationCard>
 
-                        <IntegrationCard
-                            title="Insurance Calculator"
-                            description="Assess the right coverage for you and estimate premium costs effortlessly."
-                            link='/tools/insurance-calculator'>
-                            <Shield />
-                        </IntegrationCard>
+                            <IntegrationCard
+                                title="NPV Calculator"
+                                description="Calculate the Net Present Value of future cash flows to evaluate the profitability."
+                                link='/tools/npv-calculator'>
+                                <IndianRupeeIcon />
+                            </IntegrationCard>
 
-                        <IntegrationCard
-                            title="NPV Calculator"
-                            description="Calculate the Net Present Value of future cash flows to evaluate the profitability."
-                            link='/tools/npv-calculator'>
-                            <IndianRupeeIcon />
-                        </IntegrationCard>
+                            <IntegrationCard
+                                title="ROI Calculator"
+                                description="Find Return on Investment to understand how your capital is generating returns."
+                                link='/tools/roi-calculator'>
+                                <TrendingUp />
+                            </IntegrationCard>
+                        </div>
 
-                        <IntegrationCard
-                            title="ROI Calculator"
-                            description="Find Return on Investment to understand how your capital is generating returns."
-                            link='/tools/roi-calculator'>
-                            <TrendingUp />
-                        </IntegrationCard>
+                        <div className="flex items-center mb-6 gap-2">
+                            <Wrench className="size-6" />
+                            <h3 className="text-2xl font-medium">Other Tools</h3>
+                        </div>
+                        <div className="grid gap-x-6 gap-y-6 sm:grid-cols-2 lg:grid-cols-3">
+                            <IntegrationCard
+                                title="Compare Mutual Funds"
+                                description="Compare mutual fund trends to find the best-performing ones."
+                                link='/tools/compare-mutual-funds'>
+                                <Scale />
+                            </IntegrationCard>
 
+                            <IntegrationCard
+                                title="Point-to-Point Returns"
+                                description="Get precise mutual fund returns over a fixed time span."
+                                link='/tools/point-to-point-returns'>
+                                <LineChart />
+                            </IntegrationCard>
+                        </div>
                     </div>
                 </div>
             </div>

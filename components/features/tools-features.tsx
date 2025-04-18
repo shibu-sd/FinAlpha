@@ -59,15 +59,23 @@ export default function Features() {
     )
 }
 
-const IntegrationCard = ({ title, description, children, link = 'https://github.com/shibu-sd' }: { title: string; description: string; children: React.ReactNode; link?: string }) => {
+const IntegrationCard = ({ title, description, children, link = 'https://github.com/shibu-sd' }: {
+    title: string; description: string; children: React.ReactNode; link?: string
+}) => {
     return (
-        <Card className="p-6">
+        <Card className="group p-6 transform transition-all duration-300 ease-in-out hover:scale-[1.03] hover:shadow-xl hover:bg-muted/40">
             <div className="relative">
-                <div className="*:size-10">{children}</div>
+                <div className="*:size-10 transition-transform duration-300 group-hover:scale-110">
+                    {children}
+                </div>
 
                 <div className="space-y-2 py-6">
-                    <h3 className="text-base font-medium">{title}</h3>
-                    <p className="text-muted-foreground line-clamp-2 text-sm">{description}</p>
+                    <h3 className="text-base font-medium transition-colors duration-300 group-hover:text-primary">
+                        {title}
+                    </h3>
+                    <p className="text-muted-foreground line-clamp-2 text-sm">
+                        {description}
+                    </p>
                 </div>
 
                 <div className="flex gap-3 border-t border-dashed pt-6">
@@ -75,7 +83,7 @@ const IntegrationCard = ({ title, description, children, link = 'https://github.
                         asChild
                         variant="secondary"
                         size="sm"
-                        className="gap-1 pr-2 shadow-none">
+                        className="gap-1 pr-2 shadow-none transition-all duration-300 group-hover:translate-x-1">
                         <Link href={link}>
                             Explore
                             <ChevronRight className="ml-0 !size-3.5 opacity-50" />

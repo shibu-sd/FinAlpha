@@ -159,10 +159,11 @@ export default function NPVCalculator() {
 
             <div className="relative py-16 md:py-32 bg-background">
                 <div className="mx-auto max-w-5xl px-6">
-                    <div className="mx-auto max-w-3xl text-center">
-                        <h2 className="text-balance text-3xl md:text-4xl lg:text-5xl mb-16">
+                    <div className="mx-auto max-w-3xl text-center mb-16">
+                        <h2 className="text-balance text-3xl md:text-4xl lg:text-5xl">
                             Net Present Value (NPV) Calculator
                         </h2>
+                        <p className="text-muted-foreground mt-6">Make better investment decisions by instantly computing Net Present Value with ease.</p>
                     </div>
 
                     <form

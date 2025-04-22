@@ -45,7 +45,7 @@ FinAlpha is a modern, all-in-one personal finance platform built to empower inve
 Clone the project
 
 ```bash
-  git clone https://link-to-project
+  git clone https://github.com/shibu-sd/FinAlpha.git
 ```
 
 Go to the project directory

@@ -169,9 +169,9 @@ export default function PointToPointCalculator() {
     const parseNavDate = (dateStr: string): Date => {
         const parts = dateStr.split('-');
         return new Date(
-            parseInt(parts[2]), // Year
-            parseInt(parts[1]) - 1, // Month (0-indexed)
-            parseInt(parts[0]) // Day
+            parseInt(parts[2]),
+            parseInt(parts[1]) - 1,
+            parseInt(parts[0])
         );
     };
 
@@ -181,24 +181,33 @@ export default function PointToPointCalculator() {
         const startDate = parseNavDate(startDateStr);
         const endDate = parseNavDate(endDateStr);
 
-        return navData
+        const filteredData = navData
             .filter(item => {
                 const itemDate = parseNavDate(item.date);
                 return itemDate >= startDate && itemDate <= endDate;
-            })
-            .map(item => {
-                const itemDate = parseNavDate(item.date);
-                return {
-                    date: item.date,
-                    nav: parseFloat(item.nav),
-                    formattedDate: format(itemDate, 'dd MMM yyyy')
-                };
             })
             .sort((a, b) => {
                 const dateA = parseNavDate(a.date);
                 const dateB = parseNavDate(b.date);
                 return dateA.getTime() - dateB.getTime();
             });
+
+        if (filteredData.length === 0) return [];
+
+        const initialNav = parseFloat(filteredData[0].nav);
+
+        return filteredData.map(item => {
+            const itemDate = parseNavDate(item.date);
+            const currentNav = parseFloat(item.nav);
+            const percentageGrowth = ((currentNav - initialNav) / initialNav) * 100;
+
+            return {
+                date: item.date,
+                nav: currentNav,
+                growth: parseFloat(percentageGrowth.toFixed(2)),
+                formattedDate: format(itemDate, 'dd MMM yyyy')
+            };
+        });
     };
 
     const calculateReturns = () => {
@@ -255,7 +264,10 @@ export default function PointToPointCalculator() {
             return (
                 <div className="bg-popover p-3 border rounded shadow-md text-popover-foreground">
                     <p className="font-medium">{payload[0].payload.formattedDate}</p>
-                    <p className="text-sm">NAV: ₹{payload[0].value.toFixed(2)}</p>
+                    <p className="text-sm">NAV: ₹{payload[0].payload.nav.toFixed(2)}</p>
+                    <p className={`text-sm font-medium ${payload[0].value >= 0 ? 'text-green-600' : 'text-red-600'}`}>
+                        Growth: {payload[0].value >= 0 ? '+' : ''}{payload[0].value}%
+                    </p>
                 </div>
             );
         }
@@ -472,12 +484,13 @@ export default function PointToPointCalculator() {
                                                 />
                                                 <YAxis
                                                     domain={['auto', 'auto']}
-                                                    tickFormatter={(value) => `₹${value}`}
+                                                    tickFormatter={(value) => `${value}%`}
+                                                    label={{ value: 'Growth (%)', angle: -90, position: 'insideLeft' }}
                                                 />
                                                 <Tooltip content={<CustomTooltip />} />
                                                 <Line
                                                     type="monotone"
-                                                    dataKey="nav"
+                                                    dataKey="growth"
                                                     stroke="#2563eb"
                                                     activeDot={{ r: 6 }}
                                                     dot={false}

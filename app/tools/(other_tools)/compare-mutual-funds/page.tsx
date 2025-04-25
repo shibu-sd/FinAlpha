@@ -201,40 +201,82 @@ export default function MutualFundCalculator() {
     const chartData = useMemo(() => {
         if (!selectedFunds.length) return [];
 
-        let dayLimit;
+        // Calculate the cutoff date based on the comparison period
+        const today = new Date();
+        let cutoffDate = new Date(today);
+
         switch (comparisonPeriod) {
-            case "1M": dayLimit = 30; break;
-            case "3M": dayLimit = 90; break;
-            case "6M": dayLimit = 180; break;
-            case "1Y": dayLimit = 365; break;
-            case "3Y": dayLimit = 1095; break;
-            case "5Y": dayLimit = 1825; break;
-            default: dayLimit = 999999; // All data
+            case "1M": cutoffDate.setMonth(today.getMonth() - 1); break;
+            case "3M": cutoffDate.setMonth(today.getMonth() - 3); break;
+            case "6M": cutoffDate.setMonth(today.getMonth() - 6); break;
+            case "1Y": cutoffDate.setFullYear(today.getFullYear() - 1); break;
+            case "3Y": cutoffDate.setFullYear(today.getFullYear() - 3); break;
+            case "5Y": cutoffDate.setFullYear(today.getFullYear() - 5); break;
+            case "All": cutoffDate = new Date(0); break; // Beginning of time
         }
 
-        const allDates = new Set<string>();
+        const parseDate = (dateStr: string): Date => {
+            const [day, month, year] = dateStr.split('-').map(Number);
+            return new Date(year, month - 1, day);
+        };
+
+        const fundsNavData: Record<string, { date: string, nav: number, dateObj: Date }[]> = {};
+
         selectedFunds.forEach(fund => {
-            const navData = fund.data?.data || [];
-            navData.slice(0, dayLimit).forEach(item => {
+            if (!fund.data) return;
+
+            const navData = fund.data.data
+                .map(item => ({
+                    date: item.date,
+                    nav: parseFloat(item.nav),
+                    dateObj: parseDate(item.date)
+                }))
+                .filter(item => item.dateObj >= cutoffDate && item.dateObj <= today)
+                .sort((a, b) => a.dateObj.getTime() - b.dateObj.getTime());
+
+            fundsNavData[fund.schemeName] = navData;
+        });
+
+        const allDates = new Set<string>();
+        Object.values(fundsNavData).forEach(navData => {
+            navData.forEach(item => {
                 allDates.add(item.date);
             });
         });
 
-        const sortedDates = Array.from(allDates).sort((a, b) => {
-            const dateA = new Date(a.split('-').reverse().join('-'));
-            const dateB = new Date(b.split('-').reverse().join('-'));
-            return dateA.getTime() - dateB.getTime();
-        }).slice(0, dayLimit);
+        const sortedDates = Array.from(allDates)
+            .map(dateStr => ({
+                dateStr,
+                dateObj: parseDate(dateStr)
+            }))
+            .sort((a, b) => a.dateObj.getTime() - b.dateObj.getTime())
+            .map(d => d.dateStr);
 
-        const chartData: Record<string, any>[] = sortedDates.map(date => {
+        const startingNavMap: Record<string, number> = {};
+
+        selectedFunds.forEach(fund => {
+            if (!fund.data) return;
+
+            const fundData = fundsNavData[fund.schemeName];
+            if (!fundData || fundData.length === 0) return;
+
+            startingNavMap[fund.schemeName] = fundData[0].nav;
+        });
+
+        const chartData = sortedDates.map(date => {
             const dataPoint: Record<string, any> = { date };
 
             selectedFunds.forEach(fund => {
-                if (!fund.data) return;
+                if (!fund.data || !startingNavMap[fund.schemeName]) return;
 
-                const navItem = fund.data.data.find(item => item.date === date);
+                const fundNavData = fundsNavData[fund.schemeName];
+                const navItem = fundNavData.find(item => item.date === date);
+
                 if (navItem) {
-                    dataPoint[fund.schemeName] = parseFloat(navItem.nav);
+                    const currentNav = navItem.nav;
+                    const startingNav = startingNavMap[fund.schemeName];
+                    const returnPercentage = ((currentNav - startingNav) / startingNav) * 100;
+                    dataPoint[fund.schemeName] = parseFloat(returnPercentage.toFixed(2));
                 }
             });
 
@@ -275,7 +317,9 @@ export default function MutualFundCalculator() {
                                 <span className="text-sm">{entry.name.length > 20 ? `${entry.name.substring(0, 20)}...` : entry.name}</span>
                             </div>
                             <div className="text-sm">
-                                <span className="font-medium">₹{entry.value.toFixed(2)}</span>
+                                <span className={`font-medium ${entry.value >= 0 ? 'text-green-600' : 'text-red-600'}`}>
+                                    {entry.value >= 0 ? '+' : ''}{entry.value}%
+                                </span>
                             </div>
                         </div>
                     ))}
@@ -369,7 +413,7 @@ export default function MutualFundCalculator() {
                     {/* Chart Section */}
                     {selectedFunds.length > 0 && chartData.length > 0 && (
                         <Card className="p-6 mb-8">
-                            <h3 className="text-xl font-semibold mb-4">NAV Comparison</h3>
+                            <h3 className="text-xl font-semibold mb-4">Cumulative Returns Comparison</h3>
                             <ResponsiveContainer width="100%" height={400}>
                                 <LineChart data={chartData}>
                                     <CartesianGrid strokeDasharray="3 3" />
@@ -382,7 +426,9 @@ export default function MutualFundCalculator() {
                                         tick={{ fontSize: 12 }}
                                         interval={Math.floor(chartData.length / getXAxisTickCount(comparisonPeriod))}
                                     />
-                                    <YAxis />
+                                    <YAxis
+                                        label={{ value: 'Cumulative Return (%)', angle: -90, position: 'insideLeft' }}
+                                    />
                                     <Tooltip content={<CustomTooltip />} />
                                     <Legend />
                                     {selectedFunds.map((fund, index) => (

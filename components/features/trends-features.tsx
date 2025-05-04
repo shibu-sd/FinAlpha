@@ -54,7 +54,7 @@ const TrendCard = ({
     link?: string
 }) => {
     return (
-        <Card className="group p-6 transform transition-all duration-300 ease-in-out hover:scale-[1.03] hover:shadow-xl hover:bg-muted/40 cursor-pointer">
+        <Card className="group p-6 transform transition-all duration-300 ease-in-out hover:scale-[1.03] hover:shadow-xl hover:bg-muted/40">
             <div className="relative">
                 <div className="*:size-10 transition-transform duration-300 group-hover:scale-105">
                     {children}

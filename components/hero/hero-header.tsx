@@ -13,6 +13,7 @@ const menuItems = [
     { name: 'Tools', href: '/tools  ' },
     { name: 'Blogs', href: '/blogs' },
     { name: 'Quiz', href: '/quiz' },
+    { name: 'Invest', href: '/invest' },
 ]
 
 export const HeroHeader = () => {

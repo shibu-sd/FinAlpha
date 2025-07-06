@@ -87,21 +87,11 @@ export default function HeroSection() {
                                             asChild
                                             size="lg"
                                             className="rounded-xl px-5 text-base">
-                                            <Link href="/">
-                                                <span className="text-nowrap">Explore</span>
+                                            <Link href="/invest">
+                                                <span className="text-nowrap">Invest Now</span>
                                             </Link>
                                         </Button>
                                     </div>
-                                    <Button
-                                        key={2}
-                                        asChild
-                                        size="lg"
-                                        variant="ghost"
-                                        className="h-10.5 rounded-xl px-5">
-                                        <Link href="/">
-                                            <span className="text-nowrap">Demo</span>
-                                        </Link>
-                                    </Button>
                                 </AnimatedGroup>
                             </div>
                         </div>

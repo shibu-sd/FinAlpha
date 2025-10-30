@@ -5,10 +5,10 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { schemeCodes } from '../../../../lib/mutual-fund-map';
 import { Card } from '@/components/ui/card';
-import { Search, X, Calculator, TrendingUp, TrendingDown, IndianRupee } from 'lucide-react';
+import { Search, X, Calculator, TrendingUp, TrendingDown, IndianRupee, Calendar as CalendarIcon } from 'lucide-react';
 import FooterSection from '@/components/footer';
 import { HeroHeader } from '@/components/hero/hero-header';
-import { Calendar } from '@/components/ui/calendar';
+import Calendar13 from '@/components/calendar-13';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { format, parseISO, addMonths, startOfMonth, isAfter, isBefore, addDays } from 'date-fns';
 import { cn } from '@/lib/utils';
@@ -421,12 +421,12 @@ export default function SWPBasketBacktest() {
                                                 !investmentDate && "text-muted-foreground"
                                             )}
                                         >
+                                            <CalendarIcon className="mr-2 h-4 w-4" />
                                             {investmentDate ? format(investmentDate, "PPP") : "Pick a date"}
                                         </Button>
                                     </PopoverTrigger>
                                     <PopoverContent className="w-auto p-0">
-                                        <Calendar
-                                            mode="single"
+                                        <Calendar13
                                             selected={investmentDate}
                                             onSelect={(date) => {
                                                 if (date && isAfter(date, today)) {
@@ -452,12 +452,12 @@ export default function SWPBasketBacktest() {
                                                 !swpStartDate && "text-muted-foreground"
                                             )}
                                         >
+                                            <CalendarIcon className="mr-2 h-4 w-4" />
                                             {swpStartDate ? format(swpStartDate, "PPP") : "Pick a date"}
                                         </Button>
                                     </PopoverTrigger>
                                     <PopoverContent className="w-auto p-0">
-                                        <Calendar
-                                            mode="single"
+                                        <Calendar13
                                             selected={swpStartDate}
                                             onSelect={(date) => {
                                                 if (date && isAfter(date, today)) {
@@ -483,12 +483,12 @@ export default function SWPBasketBacktest() {
                                                 !swpEndDate && "text-muted-foreground"
                                             )}
                                         >
+                                            <CalendarIcon className="mr-2 h-4 w-4" />
                                             {swpEndDate ? format(swpEndDate, "PPP") : "Pick a date"}
                                         </Button>
                                     </PopoverTrigger>
                                     <PopoverContent className="w-auto p-0">
-                                        <Calendar
-                                            mode="single"
+                                        <Calendar13
                                             selected={swpEndDate}
                                             onSelect={(date) => {
                                                 if (date && isAfter(date, today)) {

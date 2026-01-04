@@ -418,7 +418,7 @@ export default function SWPBasketBacktest() {
                                             variant="outline"
                                             className={cn(
                                                 "w-full justify-start text-left font-normal",
-                                                !investmentDate && "text-muted-foreground"
+                                                !investmentDate && "text-muted-foreground/40"
                                             )}
                                         >
                                             <CalendarIcon className="mr-2 h-4 w-4" />
@@ -449,7 +449,7 @@ export default function SWPBasketBacktest() {
                                             variant="outline"
                                             className={cn(
                                                 "w-full justify-start text-left font-normal",
-                                                !swpStartDate && "text-muted-foreground"
+                                                !swpStartDate && "text-muted-foreground/40"
                                             )}
                                         >
                                             <CalendarIcon className="mr-2 h-4 w-4" />
@@ -480,7 +480,7 @@ export default function SWPBasketBacktest() {
                                             variant="outline"
                                             className={cn(
                                                 "w-full justify-start text-left font-normal",
-                                                !swpEndDate && "text-muted-foreground"
+                                                !swpEndDate && "text-muted-foreground/40"
                                             )}
                                         >
                                             <CalendarIcon className="mr-2 h-4 w-4" />

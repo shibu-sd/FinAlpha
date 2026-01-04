@@ -338,7 +338,7 @@ export default function PointToPointCalculator() {
                                                 variant="outline"
                                                 className={cn(
                                                     "w-full justify-start text-left font-normal",
-                                                    !startDate && "text-muted-foreground"
+                                                    !startDate && "text-muted-foreground/40"
                                                 )}
                                             >
                                                 {startDate ? format(startDate, "PPP") : "Select date"}
@@ -366,7 +366,7 @@ export default function PointToPointCalculator() {
                                                 variant="outline"
                                                 className={cn(
                                                     "w-full justify-start text-left font-normal",
-                                                    !endDate && "text-muted-foreground"
+                                                    !endDate && "text-muted-foreground/40"
                                                 )}
                                             >
                                                 {endDate ? format(endDate, "PPP") : "Select date"}

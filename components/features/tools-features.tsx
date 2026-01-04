@@ -3,7 +3,7 @@ import { Card } from '@/components/ui/card'
 import { ChevronRight } from 'lucide-react'
 import Link from 'next/link'
 import * as React from 'react'
-import { CalculatorIcon, PieChart, Shield, IndianRupeeIcon, TrendingUp, Wrench, BarChart, Scale, LineChart } from 'lucide-react'
+import { CalculatorIcon, PieChart, Shield, IndianRupeeIcon, TrendingUp, Wrench, BarChart, Scale, LineChart, Calculator } from 'lucide-react'
 
 export default function Features() {
     return (
@@ -74,6 +74,13 @@ export default function Features() {
                                 description="Get precise mutual fund returns over a fixed time span."
                                 link='/tools/point-to-point-returns'>
                                 <LineChart />
+                            </IntegrationCard>
+
+                            <IntegrationCard
+                                title="SWP Basket Backtest"
+                                description="Simulate systematic withdrawals from multiple funds to plan your retirement income strategy."
+                                link='/tools/swp-basket-backtest'>
+                                <Calculator />
                             </IntegrationCard>
                         </div>
                     </div>

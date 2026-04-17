@@ -46,7 +46,7 @@ const TrendCard = ({
     title,
     description,
     children,
-    link = 'https://github.com/shibu-sd',
+    link = '#',
 }: {
     title: string
     description: string
@@ -54,30 +54,34 @@ const TrendCard = ({
     link?: string
 }) => {
     return (
-        <Card className="group p-6 transform transition-all duration-300 ease-in-out hover:scale-[1.03] hover:shadow-xl hover:bg-muted/40">
-            <div className="relative">
-                <div className="*:size-10 transition-transform duration-300 group-hover:scale-105">
-                    {children}
+        <Card className="group overflow-hidden rounded-2xl md:rounded-3xl border border-border/40 bg-zinc-50/50 dark:bg-zinc-900/30 p-1 md:p-2 transition-all duration-500 hover:bg-zinc-100/50 dark:hover:bg-zinc-900/60 backdrop-blur-md shadow-sm dark:shadow-none hover:shadow-lg dark:hover:shadow-black/40">
+            <div className="relative flex flex-col justify-between h-full rounded-xl md:rounded-2xl bg-white/60 dark:bg-zinc-950/40 p-6 border border-border/30 transition-colors">
+                <div>
+                    <div className="w-fit rounded-xl border border-border/60 bg-white dark:bg-white/5 p-3 shadow-xs transition-transform duration-300 group-hover:scale-105 group-hover:-rotate-3">
+                        <div className="*:size-6 text-foreground/80 group-hover:text-primary transition-colors">
+                            {children}
+                        </div>
+                    </div>
+
+                    <div className="space-y-2 py-6">
+                        <h3 className="text-lg font-semibold transition-colors duration-300">
+                            {title}
+                        </h3>
+                        <p className="text-muted-foreground line-clamp-2 text-sm">
+                            {description}
+                        </p>
+                    </div>
                 </div>
 
-                <div className="space-y-2 py-6">
-                    <h3 className="text-base font-medium transition-colors duration-300 group-hover:text-primary">
-                        {title}
-                    </h3>
-                    <p className="text-muted-foreground line-clamp-2 text-sm">
-                        {description}
-                    </p>
-                </div>
-
-                <div className="flex gap-3 border-t border-dashed pt-6">
+                <div className="flex pt-4 mt-auto">
                     <Button
                         asChild
-                        variant="secondary"
+                        variant="ghost"
                         size="sm"
-                        className="gap-1 pr-2 shadow-none transition-all duration-300 group-hover:translate-x-1">
-                        <Link href={link}>
+                        className="p-0 gap-1 hover:bg-transparent text-primary hover:text-primary/80 transition-all duration-300 group-hover:translate-x-1">
+                        <Link href={link} className="font-medium font-sans">
                             Explore
-                            <ChevronRight className="ml-0 !size-3.5 opacity-50" />
+                            <ChevronRight className="ml-0 !size-4 opacity-50 group-hover:opacity-100 transition-opacity" />
                         </Link>
                     </Button>
                 </div>

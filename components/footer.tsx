@@ -2,27 +2,27 @@ import { Logo } from '@/components/logo'
 import Link from 'next/link'
 
 const links = [
-    {
-        title: 'Trends',
-        href: '#',
-    },
+    // {
+    //     title: 'Trends',
+    //     href: '/trends',
+    // },
     {
         title: 'Tools',
-        href: '#',
+        href: '/tools',
     },
     {
         title: 'Blogs',
-        href: '#',
+        href: '/blogs',
     },
     {
-        title: 'Quiz',
-        href: '#',
+        title: 'Invest',
+        href: '/invest',
     }
 ]
 
 export default function FooterSection() {
     return (
-        <footer className="py-16 md:py-32">
+        <footer className="mt-12 py-10 md:py-12 border-t border-border/50 bg-background/50">
             <div className="mx-auto max-w-5xl px-6">
                 <Link href="/" aria-label="go home" className="mx-auto block size-fit">
                     <Logo />

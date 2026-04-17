@@ -47,8 +47,8 @@ export default function Features() {
                             </div>
                             
                             {/* Mock UI Area */}
-                            <div className="relative w-full md:w-1/2 h-full min-h-[300px] flex items-end justify-end">
-                                <div className="absolute right-0 bottom-0 md:-right-4 md:-bottom-4 w-[90%] md:w-[110%] h-[85%] bg-background/90 backdrop-blur-xl border border-border rounded-tl-[2rem] shadow-2xl p-6 md:p-8 flex flex-col gap-6 group-hover:-translate-y-2 group-hover:-translate-x-2 transition-transform duration-700 ease-out z-10">
+                            <div className="relative w-full md:w-1/2 h-full min-h-[300px] hidden md:flex items-end justify-end">
+                                <div className="absolute right-0 bottom-0 md:-right-4 md:-bottom-4 w-full md:w-[110%] h-[95%] md:h-[85%] bg-background/90 backdrop-blur-xl border-t border-border md:border-l md:border-t-default rounded-t-[2rem] md:rounded-t-none md:rounded-tl-[2rem] shadow-[0_-10px_30px_rgba(0,0,0,0.2)] md:shadow-2xl p-6 md:p-8 flex flex-col gap-6 md:group-hover:-translate-y-2 md:group-hover:-translate-x-2 transition-transform duration-700 ease-out z-10 border-x-0 md:border-t md:border-b md:border-r">
                                     <div className="space-y-3">
                                         <div className="flex justify-between items-end">
                                             <div>

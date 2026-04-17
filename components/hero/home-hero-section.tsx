@@ -81,7 +81,7 @@ export default function HeroSection() {
                                 <span>AMFI Registered Mutual Fund Distributor</span>
                             </div>
 
-                            <h1 className="text-balance text-5xl md:text-6xl lg:text-[4.5rem] font-bold tracking-tight leading-[1.05] mb-6 whitespace-nowrap">
+                            <h1 className="text-balance text-5xl md:text-6xl lg:text-[4.5rem] font-bold tracking-tight leading-[1.15] mb-6">
                                 <TextEffect
                                     preset="blur"
                                     speedSegment={0.3}

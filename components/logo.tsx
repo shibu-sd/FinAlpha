@@ -4,15 +4,15 @@ import Image from 'next/image'
 
 export const Logo = ({ className }: { className?: string }) => {
     return (
-        <div className={cn('flex items-center gap-2', className)}>
+        <div className={cn('flex items-center gap-3', className)}>
             <Image
                 src="/finalpha_logo.png"
                 alt="Logo"
-                width={28}
-                height={28}
-                className="w-8 h-8"
+                width={36}
+                height={36}
+                className="w-9 h-9 md:w-10 md:h-10"
             />
-            <span className="text-lg font-bold">FinAlpha</span>
+            <span className="text-xl md:text-2xl font-bold tracking-tight">FinAlpha</span>
         </div>
     )
 }

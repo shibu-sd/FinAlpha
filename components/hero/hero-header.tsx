@@ -9,10 +9,10 @@ import { ModeToggle } from '../theme/mode-toggle'
 
 const menuItems = [
     { name: 'Home', href: '/' },
-    { name: 'Trends', href: '/trends' },
+    // { name: 'Trends', href: '/trends' }, // Hidden for now
     { name: 'Tools', href: '/tools' },
     { name: 'Blogs', href: '/blogs' },
-    { name: 'Quiz', href: '/quiz' },
+    // { name: 'Quiz', href: '/quiz' }, // Hidden for now
     { name: 'Invest', href: '/invest' },
 ]
 
@@ -30,10 +30,10 @@ export const HeroHeader = () => {
     return (
         <header>
             <nav
-                data-state={menuState && 'active'}
-                className="fixed z-20 w-full px-2">
-                <div className={cn('mx-auto mt-2 max-w-6xl px-6 transition-all duration-300 lg:px-12', isScrolled && 'bg-background/50 max-w-4xl rounded-2xl border backdrop-blur-lg lg:px-5')}>
-                    <div className="relative flex flex-wrap items-center justify-between gap-6 py-3 lg:gap-0 lg:py-4">
+                data-state={menuState ? 'active' : ''}
+                className="fixed top-0 z-50 w-full px-4 pt-4 transition-all duration-500">
+                <div className={cn('mx-auto max-w-6xl px-6 transition-all duration-500 rounded-full', isScrolled ? 'bg-background/80 dark:bg-background/60 max-w-4xl border border-border/50 shadow-lg shadow-black/5 backdrop-blur-xl lg:px-8 py-1' : 'bg-transparent py-2')}>
+                    <div className="relative flex flex-wrap items-center justify-between gap-6 lg:gap-0">
                         <div className="flex w-full justify-between lg:w-auto">
                             <Link
                                 href="/"
@@ -52,7 +52,7 @@ export const HeroHeader = () => {
                         </div>
 
                         <div className="absolute inset-0 m-auto hidden size-fit lg:block">
-                            <ul className="flex gap-8 text-sm">
+                            <ul className="flex gap-10 xl:gap-12 text-lg font-medium">
                                 {menuItems.map((item, index) => (
                                     <li key={index}>
                                         <Link
@@ -65,9 +65,9 @@ export const HeroHeader = () => {
                             </ul>
                         </div>
 
-                        <div className="bg-background in-data-[state=active]:block lg:in-data-[state=active]:flex mb-6 hidden w-full flex-wrap items-center justify-end space-y-8 rounded-3xl border p-6 shadow-2xl shadow-zinc-300/20 md:flex-nowrap lg:m-0 lg:flex lg:w-fit lg:gap-6 lg:space-y-0 lg:border-transparent lg:bg-transparent lg:p-0 lg:shadow-none dark:shadow-none dark:lg:bg-transparent">
+                        <div className="bg-background/95 backdrop-blur-lg in-data-[state=active]:block lg:in-data-[state=active]:flex mb-6 hidden w-full flex-wrap items-center justify-end space-y-8 rounded-3xl border border-border/40 p-6 shadow-2xl shadow-black/10 dark:shadow-black/40 md:flex-nowrap lg:m-0 lg:flex lg:w-fit lg:gap-6 lg:space-y-0 lg:border-transparent lg:bg-transparent lg:p-0 lg:shadow-none dark:shadow-none dark:lg:bg-transparent transition-all">
                             <div className="lg:hidden">
-                                <ul className="space-y-6 text-base">
+                                <ul className="space-y-6 text-xl font-medium">
                                     {menuItems.map((item, index) => (
                                         <li key={index}>
                                             <Link
@@ -81,12 +81,13 @@ export const HeroHeader = () => {
                             </div>
                             <div className="flex w-full flex-col space-y-3 sm:flex-row sm:gap-3 sm:space-y-0 md:w-fit">
                                 <ModeToggle />
+                                {/* 
                                 <Button
                                     asChild
                                     variant="outline"
                                     size="sm"
                                     className={cn(isScrolled && 'lg:hidden')}>
-                                    <Link href="#">
+                                    <Link href="/login" target="_blank" rel="noopener noreferrer">
                                         <span>Login</span>
                                     </Link>
                                 </Button>
@@ -94,18 +95,21 @@ export const HeroHeader = () => {
                                     asChild
                                     size="sm"
                                     className={cn(isScrolled && 'lg:hidden')}>
-                                    <Link href="#">
+                                    <Link href="/invest">
                                         <span>Sign Up</span>
                                     </Link>
                                 </Button>
+                                */}
+                                {/*
                                 <Button
                                     asChild
                                     size="sm"
-                                    className={cn(isScrolled ? 'lg:inline-flex' : 'hidden')}>
-                                    <Link href="#">
+                                    className={cn('rounded-full transition-transform hover:scale-105', isScrolled ? 'lg:inline-flex' : 'hidden')}>
+                                    <Link href="/invest">
                                         <span>Get Started</span>
                                     </Link>
                                 </Button>
+                                */}
                             </div>
                         </div>
                     </div>

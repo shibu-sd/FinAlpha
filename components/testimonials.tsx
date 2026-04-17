@@ -12,51 +12,41 @@ const testimonials: Testimonial[] = [
     {
         name: 'Sahil Arora',
         role: 'Retail Investor',
-        image: 'https://randomuser.me/api/portraits/men/32.jpg',
-        quote: 'FinAlpha makes market tracking effortless. The tools are so intuitive, I enjoy managing my portfolio now.',
+        image: '/testimonials/sahil.jpg',
+        quote: 'FinAlpha makes the entire process incredibly effortless. The continuous guidance and support are always there whenever I need them.',
     },
     {
-        name: 'Sanya Kapoor',
-        role: 'Student & First-Time Investor',
-        image: 'https://randomuser.me/api/portraits/women/44.jpg',
-        quote: 'As a beginner, I was overwhelmed — until I found FinAlpha. The chatbot and blogs made everything click.',
+        name: 'Priyanka Vishwas',
+        role: 'First-Time Investor',
+        image: '',
+        quote: 'Thanks to FinAlpha, I finally started a dedicated SIP for my child\'s education. Honestly, I am extremely happy with the overall experience.',
     },
     {
-        name: 'Rohan Deshmukh',
-        role: 'Marketing Manager',
-        image: 'https://randomuser.me/api/portraits/men/54.jpg',
-        quote: 'The financial calculators are a game-changer. I finally feel in control of my savings and investments.',
+        name: 'Vinay Sharma',
+        role: 'Govt Job',
+        image: '/testimonials/vinay.jpg',
+        quote: 'Because of my job, I barely have time to track my portfolio. FinAlpha\'s personalized support helps my family stay completely disciplined and on course with our investments.',
     },
     {
-        name: 'Neha Varma',
-        role: 'Chartered Accountant',
-        image: 'https://randomuser.me/api/portraits/women/68.jpg',
-        quote: 'FinAlpha’s tools help me cut through the noise. I use it to quickly analyze funds and track markets daily.',
+        name: 'Nikita Bajaj',
+        role: 'Retail Investor',
+        image: '',
+        quote: 'I received a timely WhatsApp from FinAlpha about tax-loss harvesting, which really helped! I\'ve never seen a more dedicated professional than Ankit.',
     },
     {
-        name: 'Yash Agarwal',
-        role: 'Startup Founder',
-        image: 'https://randomuser.me/api/portraits/men/71.jpg',
-        quote: 'I use FinAlpha every day. From stock heatmaps to Alpha’s insights, it’s like having a financial co-pilot.',
+        name: 'Ritesh Sahu',
+        role: 'Business Owner',
+        image: '/testimonials/ritesh.png',
+        quote: 'I wanted to deploy a lump sum amount but felt completely confused. Ankit helped construct a personalized portfolio that perfectly aligned with my long-term wealth goals.',
     },
     {
-        name: 'Ishita Reddy',
-        role: 'Mutual Fund Enthusiast',
-        image: 'https://randomuser.me/api/portraits/women/29.jpg',
-        quote: 'The 5-star mutual fund list and ROI calculator are super handy. FinAlpha truly simplifies investment planning.',
+        name: 'Vibha Pandey',
+        role: 'Retail Investor',
+        image: '',
+        quote: 'Swift and straight to the point. Ankit taught me that a SIP isn\'t just an investment, it\'s a discipline. Excellent service backed by serious market experience.',
     },
 ];
 
-
-const chunkArray = (array: Testimonial[], chunkSize: number): Testimonial[][] => {
-    const result: Testimonial[][] = []
-    for (let i = 0; i < array.length; i += chunkSize) {
-        result.push(array.slice(i, i + chunkSize))
-    }
-    return result
-}
-
-const testimonialChunks = chunkArray(testimonials, Math.ceil(testimonials.length / 3))
 
 export default function Testimonials() {
     return (
@@ -67,30 +57,29 @@ export default function Testimonials() {
                         <h2 className="text-balance text-4xl font-semibold lg:text-5xl">Trusted by the FinAlpha Community</h2>
                         <p className="text-body mt-6">Empowering investors from all walks of life — see what they have to say.</p>
                     </div>
-                    <div className="mt-8 grid gap-3 sm:grid-cols-2 md:mt-12 lg:grid-cols-3">
-                        {testimonialChunks.map((chunk, chunkIndex) => (
-                            <div key={chunkIndex} className="space-y-3">
-                                {chunk.map(({ name, role, quote, image }, index) => (
-                                    <Card key={index}>
-                                        <CardContent className="grid grid-cols-[auto_1fr] gap-3 pt-6">
-                                            <Avatar className="size-9">
+                    <div className="mt-8 grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 md:mt-12 auto-rows-fr">
+                        {testimonials.map(({ name, role, quote, image }, index) => (
+                            <Card key={index} className="h-full flex flex-col hover:bg-card/60 transition-colors">
+                                <CardContent className="flex flex-col gap-3 pt-6 flex-1">
+                                    <div className="flex gap-3">
+                                        <Avatar className="size-9 shrink-0">
+                                            {image ? (
                                                 <AvatarImage alt={name} src={image} loading="lazy" width="120" height="120" />
-                                                <AvatarFallback>ST</AvatarFallback>
-                                            </Avatar>
-
-                                            <div>
-                                                <h3 className="font-medium">{name}</h3>
-
-                                                <span className="text-muted-foreground block text-sm tracking-wide">{role}</span>
-
-                                                <blockquote className="mt-3">
-                                                    <p className="text-gray-700 dark:text-gray-300">{quote}</p>
-                                                </blockquote>
-                                            </div>
-                                        </CardContent>
-                                    </Card>
-                                ))}
-                            </div>
+                                            ) : null}
+                                            <AvatarFallback className="bg-primary/20 text-primary text-xs font-semibold">
+                                                {name.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase()}
+                                            </AvatarFallback>
+                                        </Avatar>
+                                        <div>
+                                            <h3 className="font-medium text-foreground">{name}</h3>
+                                            <span className="text-muted-foreground block text-xs tracking-wide">{role}</span>
+                                        </div>
+                                    </div>
+                                    <blockquote className="mt-2 flex-1">
+                                        <p className="text-sm text-foreground/80 leading-relaxed">{quote}</p>
+                                    </blockquote>
+                                </CardContent>
+                            </Card>
                         ))}
                     </div>
                 </div>

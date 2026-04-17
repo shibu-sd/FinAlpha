@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme/theme-provider"
 import { Chatbot } from "@/components/chatbot";
+import { WhatsAppButton } from "@/components/whatsapp-button";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,7 +17,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "FinAlpha - Your Financial Edge, Simplified",
-  description: "FinAlpha helps you make smarter financial decisions with real-time stock trends, AI-powered insights, smart calculators, and expert content - all in one place.",
+  description: "FinAlpha provides disciplined wealth creation for the Indian investor. Build lifelong wealth through structured SIPs, goal-based planning, and expert mutual fund curation.",
 };
 
 export default function RootLayout({
@@ -37,6 +38,7 @@ export default function RootLayout({
         >
           {children}
           <Chatbot />
+          <WhatsAppButton />
         </ThemeProvider>
       </body>
     </html>
